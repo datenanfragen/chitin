@@ -18,14 +18,10 @@
     {{- end }}
     <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
 
+    {{ partial "head/fonts.html" . }}
     {{- block "styles" . -}}
-    <link rel="preconnect" href="https://static.dacdn.de">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="https://static.dacdn.de/fonts/fira-sans/fira-sans-v8-latin-regular.woff2">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="https://static.dacdn.de/fonts/fira-sans/fira-sans-v8-latin-600.woff2">
-    <link rel="preload" as="font" crossorigin type="font/woff2" href="https://static.dacdn.de/fonts/league-spartan/league-spartan-600.woff2">
-    <link rel="stylesheet" href="https://static.dacdn.de/fonts/fira-sans.css">
-    <link rel="stylesheet" href="https://static.dacdn.de/fonts/league-spartan.css">
-    <link rel="stylesheet" href="{{ "css/style.gen.css" | absURL }}"/>
+    {{ $style := resources.Get "scss/main.scss" | toCSS | postCSS (dict "config" "postcss.config.js" "noMap" true) | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
     {{- end -}}
 
     {{ partial "head/meta.html" . }}
