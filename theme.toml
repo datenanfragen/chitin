@@ -1,0 +1,10 @@
+name = "chitin"
+license = "MIT"
+licenselink = "https://github.com/datenanfragen/chitin/blob/master/LICENSE"
+description = "Hugo theme for the datenanfragen project"
+homepage = "https://github.com/datenanfragen/chitin"
+min_version = "0.48"
+
+[author]
+    name = "Datenanfragen.de e. V."
+    homepage = "https://verein.datenanfragen.de"
