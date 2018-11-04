@@ -1,7 +1,2 @@
 pluralizeListTitles = false
 preserveTaxonomyNames = true
-
-[[languages.en.menu.topdropdown]]
-    name = "Artikel"
-    url = "/blog"
-    weight = 50
