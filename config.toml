@@ -1,0 +1,9 @@
+defaultContentLanguage = "de"
+pluralizeListTitles = false
+preserveTaxonomyNames = true
+
+
+[[languages.de.menu.topdropdown]]
+    name = "Anfrage generieren"
+    url = "/generator"
+    weight = 10

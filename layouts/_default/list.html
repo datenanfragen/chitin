@@ -1,0 +1,12 @@
+{{ define "heading" }}
+    {{ T "blog-post" }}
+{{ end }}
+
+{{ define "main" }}
+<main>
+    {{ range .Paginator.Pages }}
+    {{ partial "summary.html" . }}
+    {{ end }}
+    {{ partial "pagination.html" . }}
+</main>
+{{ end }}

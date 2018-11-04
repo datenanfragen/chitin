@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+        {{- block "title" . -}}
+        {{ if .Title}}{{ .Title }}{{ else if .Params.name}}{{ .Params.name }}{{ end }} &middot; {{ .Site.Title }}
+        {{- end -}}
+    </title>
+
+    {{ if .IsTranslated -}}
+        {{ range .Translations -}}
+            <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+        {{ end -}}
+    {{- end }}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+
+    {{- block "styles" . -}}
+    <link rel="preconnect" href="https://static.dacdn.de">
+    <link rel="preload" as="font" crossorigin type="font/woff2" href="https://static.dacdn.de/fonts/fira-sans/fira-sans-v8-latin-regular.woff2">
+    <link rel="preload" as="font" crossorigin type="font/woff2" href="https://static.dacdn.de/fonts/fira-sans/fira-sans-v8-latin-600.woff2">
+    <link rel="preload" as="font" crossorigin type="font/woff2" href="https://static.dacdn.de/fonts/league-spartan/league-spartan-600.woff2">
+    <link rel="stylesheet" href="https://static.dacdn.de/fonts/fira-sans.css">
+    <link rel="stylesheet" href="https://static.dacdn.de/fonts/league-spartan.css">
+    <link rel="stylesheet" href="{{ "css/style.gen.css" | absURL }}"/>
+    {{- end -}}
+
+    {{ partial "head/meta.html" . }}
+    {{ partial "head/favicons.html" . }}
+</head>
+<body>
+<header id="nav-header">
+    <div id="nav-header-bg"></div>
+    <div id="header-main" class="container">
+        <a href="{{ "/" | absURL }}"><img id="logo" src="{{ T "logo" . | absURL }}"></a>
+        <nav id="main-nav">
+            <div id="menu-items">
+                {{ range .Site.Menus.topbar}}
+                <a href="{{ .URL | absURL }}" class="menu-link desktop-only">{{ .Name }}</a>
+                {{ end }}
+
+                {{ if or .Site.Menus.topdropdown .Site.Menus.topbar }}
+                <div class="dropdown-container {{ if not .Site.Menus.topdropdown }}mobile-only{{ end }}">
+                    <a class="button button-secondary menu-link" href="javascript:void(0)"><span class="icon icon-menu"></span></a>
+                    <div class="dropdown" id="personal-menu">
+                        <div class="mobile-only">
+                            {{ range .Site.Menus.topbar}}
+                            <a href="{{ .URL | absURL }}" class="menu-link">{{ .Name }}</a>
+                            {{ end }}
+                        </div>
+
+                        {{ range .Site.Menus.topdropdown }}
+                        <a href="{{ .URL | absURL }}" class="menu-link">{{ .Name }}</a>
+                        {{ end }}
+
+                        {{- block "topdropdown" . -}}{{- end -}}
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </nav>
+        <div class="clearfix"></div>
+    </div>
+</header>
+{{ if .IsHome }}
+<div id="home-hero-bg"></div>
+{{ else }}
+<div id="heading-bg">
+    <div id="heading" class="container"><h1>{{ block "heading" . }}{{ .Title }}{{ end }}</h1></div>
+</div>
+{{ end }}
+<div class="container">
+    {{ block "main" . }}
+    {{ end }}
+</div>
+<footer>
+    <div class="container">
+        <div class="col33 footer-col" style="padding-right: 20px;">
+            <p style="margin-top: 0;">{{ T "footer-about-us" | safeHTML }}</p>
+            <div class="i18n-button-container"></div>
+        </div>
+        <div class="col22 footer-col">
+            <ul>
+                {{ range .Site.Menus.footerleft }}
+                <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                {{ .Post }}
+                {{ end }}
+            </ul>
+        </div>
+        <div class="col22 footer-col">
+            <ul>
+                {{ range .Site.Menus.footercenter }}
+                <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                {{ .Post }}
+                {{ end }}
+            </ul>
+        </div>
+        <div class="col22 footer-col">
+            <ul>
+                {{ range .Site.Menus.footerright }}
+                <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                {{ .Post }}
+                {{ end }}
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</footer>
+{{ partial "scripts" . }}
+{{ block "scripts" . }}
+{{ end }}
+</body>
+</html>
