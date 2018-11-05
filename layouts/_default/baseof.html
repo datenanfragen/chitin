@@ -38,6 +38,8 @@
                 <a href="{{ .URL | absURL }}" class="menu-link desktop-only">{{ .Name }}</a>
                 {{ end }}
 
+                {{- block "topbar" . -}}{{- end -}}
+
                 {{ if or .Site.Menus.topdropdown .Site.Menus.topbar }}
                 <div class="dropdown-container {{ if not .Site.Menus.topdropdown }}mobile-only{{ end }}">
                     <a class="button button-secondary menu-link" href="javascript:void(0)"><span class="icon icon-menu"></span></a>
