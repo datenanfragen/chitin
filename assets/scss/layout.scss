@@ -238,6 +238,17 @@ a #logo {
     display: block;
 }
 
+/* Nicer Text */
+
+article.page {
+    width: 80%;
+    margin: auto;
+
+    @include mobile {
+        width: inherit;
+        margin: unset;
+    }
+}
 
 /* Footer */
 footer {
