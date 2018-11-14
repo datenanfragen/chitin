@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 /* Header */
 header#nav-header {
@@ -83,7 +83,9 @@ a #logo {
             color: $primary-lighter-color;
         }
 
-        &:hover, &:focus, &:active {
+        &:hover,
+        &:focus,
+        &:active {
             color: $primary-color;
         }
     }
@@ -240,7 +242,8 @@ a #logo {
 
 /* Nicer Text */
 
-article.page {
+article.page,
+.narrow-page {
     width: 80%;
     margin: auto;
 
@@ -278,9 +281,13 @@ footer {
 
     a {
         color: $primary-lighter-color;
-        &:visited {color: $primary-lighter-color;}
+        &:visited {
+            color: $primary-lighter-color;
+        }
 
-        &:active, &:focus, &:hover {
+        &:active,
+        &:focus,
+        &:hover {
             color: $primary-color;
         }
     }
