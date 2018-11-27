@@ -66,6 +66,7 @@
 </header>
 {{ if .IsHome }}
 <div id="home-hero-bg"></div>
+{{ block "home-hero" . }}{{ end }}
 {{ else }}
 <div id="heading-bg">
     <div id="heading" class="container"><h1>{{ block "heading" . }}{{ .Title }}{{ end }}</h1></div>

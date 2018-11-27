@@ -85,3 +85,21 @@
     font-icon: 200% url('close.svg');
     vertical-align: -3px;
 }
+
+.icon-lock:before {
+    @extend %icon;
+    font-icon: 200% url('lock.svg');
+    vertical-align: -3px;
+}
+
+.icon-group:before {
+    @extend %icon;
+    font-icon: 200% url('group.svg');
+    vertical-align: -3px;
+}
+
+.icon-credit-card:before {
+    @extend %icon;
+    font-icon: 200% url('credit-card.svg');
+    vertical-align: -3px;
+}
