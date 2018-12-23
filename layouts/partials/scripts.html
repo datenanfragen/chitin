@@ -1,2 +1,11 @@
 <script>
+	const LOCALE = {{ .Site.Language.Lang }};
+	const SUPPORTED_LANGUAGES = {
+        {{- if .IsTranslated -}}
+            {{- range .Translations -}}
+                "{{ .Lang }}": "{{ .Permalink }}",
+            {{- end -}}
+        {{- end -}}
+    };
+    const BASE_URL = {{ "/" | absURL }};
 </script>
