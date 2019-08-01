@@ -91,7 +91,7 @@
         <div class="col22 footer-col">
             <ul>
                 {{ range .Site.Menus.footerleft }}
-                <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                <li><a href="{{ .URL | absLangURL }}">{{ .Name | safeHTML }}</a></li>
                 {{ .Post }}
                 {{ end }}
             </ul>
@@ -99,7 +99,7 @@
         <div class="col22 footer-col">
             <ul>
                 {{ range .Site.Menus.footercenter }}
-                <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                <li><a href="{{ .URL | absLangURL }}">{{ .Name | safeHTML }}</a></li>
                 {{ .Post }}
                 {{ end }}
             </ul>
@@ -107,7 +107,7 @@
         <div class="col22 footer-col">
             <ul>
                 {{ range .Site.Menus.footerright }}
-                <li><a href="{{ .URL | absLangURL }}">{{ .Name }}</a></li>
+                <li><a href="{{ .URL | absLangURL }}">{{ .Name | safeHTML }}</a></li>
                 {{ .Post }}
                 {{ end }}
             </ul>
